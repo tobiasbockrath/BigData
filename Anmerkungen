@@ -1,0 +1,15 @@
+Jar Dateien nach /usr/lib/flume-ng/lib/
+Log Dateien unter /var/log/flume-ng/
+
+hapoop1 in sudo vi /etc/hosts
+
+Ordnder flume anlegen, dazu:
+
+services/hdfs/configuration/view and edit/Service Wide/Security/Superuser Group = cloudera
+Ordner Flume anlegen: hadoop fs -mkdir /user/flume
+Owner festlegen: hadoop fs -chown -R flume:flume /user/flume
+Recht festlegen: hadoop fs -chmod -R 777 /user/flume
+
+
+MapReduce ausführen
+hadoop jar mr.jar MaxTemp /user/flume/2014/02/26/17/FlumeData.1393433795484 /user/flume/output
