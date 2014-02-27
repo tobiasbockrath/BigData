@@ -33,8 +33,10 @@ Mapper<LongWritable, Text, Text, IntWritable> {
 		// TODO Auto-generated method stub
 		
 		String line = value.toString();
-		StringTokenizer itr = new StringTokenizer(line);
+		StringTokenizer itr = new StringTokenizer(line, ";");
+	
 		while (itr.hasMoreTokens()) {
+			
 			word.set(itr.nextToken());
 			output.collect(word, one);
 		}
@@ -58,6 +60,7 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		output.collect(key, new IntWritable(sum));
 	}
 }
+
 
 public class MaxTemp {
 
