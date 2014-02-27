@@ -1,7 +1,6 @@
 package com.main;
 
 
-
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.StringTokenizer;
@@ -39,6 +38,19 @@ Mapper<LongWritable, Text, Text, IntWritable> {
 			
 			word.set(itr.nextToken());
 			output.collect(word, one);
+			/*
+			
+			String newLine = itr.nextToken();
+			StringTokenizer itr1 = new StringTokenizer(newLine, ",");
+			
+			while(itr1.hasMoreTokens()){
+			
+				word.set(itr1.nextToken());
+				output.collect(word, one);
+			}
+			
+			*/
+			
 		}
 	}
 }
@@ -53,11 +65,17 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 			OutputCollector<Text, IntWritable> output, Reporter reporter3)
 			throws IOException {
 		// TODO Auto-generated method stub
-		int sum = 0;
+		
+		int maxTemp = Integer.MIN_VALUE; 
+		
 		while (values.hasNext()) {
-			sum += values.next().get();
+			
+			maxTemp = Math.max(maxTemp, values.next().get());
 		}
-		output.collect(key, new IntWritable(sum));
+		
+		output.collect(key, new IntWritable(maxTemp));
+
+		
 	}
 }
 

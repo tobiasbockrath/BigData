@@ -110,15 +110,18 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 					e.printStackTrace();		
 				}	
 				
+				
+				//body zusammenbauen
+				String body = aWeather.getTemp() + ";";
 
 				//body zusammenbauen
-				String body = "time: " + dt + ", " + "city: " + aWeather.getName() + ", " 
+			/*	String body = "time: " + dt + ", " + "city: " + aWeather.getName() + ", " 
 							+ "country: " + aWeather.getCountry() + ", "
 							+ "sunrise: " + aWeather.getSunrise() + ", " + "sunset: " + aWeather.getSunset() + ", " 
 							+ "temp: " +aWeather.getTemp() + ", " + "tempmax: " + aWeather.getTemp_max() + ", " 
 							+ "tempmin: " + aWeather.getTemp_min() + ", " + "humidity: " + aWeather.getHumidity() + ", "
 							+ "pressure: " + aWeather.getPressure() + ", " + "speed: " + aWeather.getSpeed() + ";";
-				
+				*/
 				//header zusammenbauen
 				long now = System.currentTimeMillis();
 				headers.put("timestamp", Long.toString(now));
