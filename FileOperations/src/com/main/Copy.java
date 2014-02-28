@@ -19,12 +19,10 @@ public class Copy {
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/mapred-site.xml"));
 		 
 		FileSystem fileSystem = FileSystem.get(conf);
-		Path srcPath = new Path(source);
-		 
-		Path dstPath = new Path(dest);
-		// Check if the file already exists
 		
-		// Get the filename out of the file path
+		Path srcPath = new Path(source);
+		Path dstPath = new Path(dest);
+		
 		String filename = source.substring(source.lastIndexOf('/') + 1, source.length());
 		 
 		try{
