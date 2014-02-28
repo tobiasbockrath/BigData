@@ -22,7 +22,7 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 	private static String [] citys = {"Amsterdam", "Ankara", "Andorra la Vella", "Athen", "Belgrad", "Berlin", "Bern",
 										"Bratislava", "Brüssel", "Budapest", "Chișinău", 
 										"Dublin, irl", "Helsinki", "Kiew", "Kopenhagen ", "Lissabon", "Ljubljana", "London,uk",
-										"Madrid", "Minsk", "Monaco ", "Moskau", "Nikosia", "Oslo","Paris,fr",
+										"Madrid", "Minsk", "Monaco ", "Moskau", "Oslo","Paris,fr",
 										"Podgorica", "Prag", "Reykjavík", "Riga ", "Rom", "Sarajevo", "Skopje",
 										"Sofia", "Stockholm", "Talinn", "Tirana", "Vaduz", "Valletta", "Vilnius",
 										"Warschau", "Wien", "Zagreb"};
@@ -109,6 +109,7 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 					// TODO Auto-generated catch block
 					e.printStackTrace();		
 				}	
+				
 				
 				//body zusammenbauen: 	Zeit,Stadt,Land,Sonnaufgang, Sonnenuntergang, aktuelleTemperatur,
 				//						maxTemperatur, mainTemperatur, Luftfeuchtigkeit, Luftdruck, Windgeschwindigkeit				
