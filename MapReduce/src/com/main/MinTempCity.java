@@ -1,6 +1,5 @@
 package com.main;
 
-
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.StringTokenizer;
@@ -19,17 +18,19 @@ import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
 
-class MapClass extends MapReduceBase implements
-Mapper<LongWritable, Text, Text, IntWritable> {
 
-	private Text word = new Text();	
-	
+public class MinTempCity  extends MapReduceBase implements
+Mapper<LongWritable, Text, Text, IntWritable>,
+Reducer<Text, IntWritable, Text, IntWritable> {
+
+	private Text word = new Text();
+
 	@Override
 	public void map(LongWritable key, Text value,
 			OutputCollector<Text, IntWritable> output, Reporter reporter)
 			throws IOException {
 		// TODO Auto-generated method stub
-		
+			
 		String line = value.toString();
 		StringTokenizer itr = new StringTokenizer(line, ";");
 	
@@ -39,43 +40,34 @@ Mapper<LongWritable, Text, Text, IntWritable> {
 			
 			String splitWord[] = word.toString().split(","); 
 			
-			String datum = splitWord[0];
-			float temp = Float.parseFloat(splitWord[2]); //5
+			String city = splitWord[1];
+			float temp = Float.parseFloat(splitWord[5]);
 					
-			output.collect(new Text(datum), new IntWritable((int)temp));
+			output.collect(new Text(city), new IntWritable((int)temp));
 
 		}
+		
 	}
-}
-
-
-
-class ReduceClass extends MapReduceBase implements
-Reducer<Text, IntWritable, Text, IntWritable> {
-
+	
 	@Override
 	public void reduce(Text key, Iterator<IntWritable> values,
 			OutputCollector<Text, IntWritable> output, Reporter reporter3)
 			throws IOException {
 		// TODO Auto-generated method stub
-
-		int maxTemp = Integer.MIN_VALUE; 
+		int minTemp = Integer.MAX_VALUE; 
 		
 		while (values.hasNext()) {
 			
-			maxTemp = Math.max(maxTemp, values.next().get());
+			minTemp = Math.min(minTemp, values.next().get());
 		}
 		
-		output.collect(key, new IntWritable(maxTemp));
-	
+		output.collect(key, new IntWritable(minTemp));
 	}
-}
 
 
-public class MaxTemp {
-
+	
 	public void run(String inputPath, String outputPath) throws Exception {
-		JobConf conf = new JobConf(MaxTemp.class);
+		JobConf conf = new JobConf(MinTempCity.class);
 		conf.setJobName("maxtemp");
 
 		// the keys are words (strings)
@@ -83,8 +75,8 @@ public class MaxTemp {
 		// the values are counts (ints)
 		conf.setOutputValueClass(IntWritable.class);
 
-		conf.setMapperClass(MapClass.class);
-		conf.setReducerClass(ReduceClass.class);
+		conf.setMapperClass(MinTempCity.class);
+		conf.setReducerClass(MinTempCity.class);
 		
 		//temporäre Dateien sollen nicht berücksichtigt werden
 		FileInputFormat.setInputPathFilter(conf, TmpFilter.class);
@@ -95,22 +87,16 @@ public class MaxTemp {
 		JobClient.runJob(conf);
 	}
 	
-
-	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		MaxTemp mt = new MaxTemp();
-		
 		try {
-			mt.run(args[0], args[1]);
+			new MinTempCity().run(args[0], args[1]);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 }
-
-
-
-
