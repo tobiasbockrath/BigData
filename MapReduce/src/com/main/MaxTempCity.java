@@ -23,6 +23,7 @@ public class MaxTempCity  extends MapReduceBase implements
 Mapper<LongWritable, Text, Text, IntWritable>,
 Reducer<Text, IntWritable, Text, IntWritable> {
 
+
 	private Text word = new Text();
 
 	@Override
@@ -87,6 +88,7 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		JobClient.runJob(conf);
 	}
 	
+
 	/**
 	 * @param args
 	 */
