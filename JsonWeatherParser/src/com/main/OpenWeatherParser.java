@@ -20,9 +20,9 @@ import com.objects.Weather;
 public class OpenWeatherParser extends AbstractSource implements EventDrivenSource  {
 
 	private static String [] citys = {"Amsterdam", "Ankara", "Andorra la Vella", "Athen", "Belgrad", "Berlin", "Bern",
-										"Bratislava", "Brüssel", "Budapest", "Chișinău", "San Marino",
+										"Bratislava", "Brüssel", "Budapest", "Chișinău", 
 										"Dublin, irl", "Helsinki", "Kiew", "Kopenhagen ", "Lissabon", "Ljubljana", "London,uk",
-										"Luxemburg", "Madrid", "Minsk", "Monaco ", "Moskau", "Nikosia", "Oslo","Paris,fr",
+										"Madrid", "Minsk", "Monaco ", "Moskau", "Nikosia", "Oslo","Paris,fr",
 										"Podgorica", "Prag", "Reykjavík", "Riga ", "Rom", "Sarajevo", "Skopje",
 										"Sofia", "Stockholm", "Talinn", "Tirana", "Vaduz", "Valletta", "Vilnius",
 										"Warschau", "Wien", "Zagreb"};
@@ -110,18 +110,13 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 					e.printStackTrace();		
 				}	
 				
+				//body zusammenbauen: 	Zeit,Stadt,Land,Sonnaufgang, Sonnenuntergang, aktuelleTemperatur,
+				//						maxTemperatur, mainTemperatur, Luftfeuchtigkeit, Luftdruck, Windgeschwindigkeit				
+				String body = dt + "," + aWeather.getName() + ","+  aWeather.getCountry() + ","
+							+ aWeather.getSunrise() + "," +  aWeather.getSunset() + "," 
+							+ aWeather.getTemp() + "," + aWeather.getTemp_max() + ","  + aWeather.getTemp_min() + ","
+							+ aWeather.getHumidity() + "," + aWeather.getPressure() + "," +  aWeather.getSpeed() + ";";
 				
-				//body zusammenbauen
-				String body = aWeather.getTemp() + ";";
-
-				//body zusammenbauen
-			/*	String body = "time: " + dt + ", " + "city: " + aWeather.getName() + ", " 
-							+ "country: " + aWeather.getCountry() + ", "
-							+ "sunrise: " + aWeather.getSunrise() + ", " + "sunset: " + aWeather.getSunset() + ", " 
-							+ "temp: " +aWeather.getTemp() + ", " + "tempmax: " + aWeather.getTemp_max() + ", " 
-							+ "tempmin: " + aWeather.getTemp_min() + ", " + "humidity: " + aWeather.getHumidity() + ", "
-							+ "pressure: " + aWeather.getPressure() + ", " + "speed: " + aWeather.getSpeed() + ";";
-				*/
 				//header zusammenbauen
 				long now = System.currentTimeMillis();
 				headers.put("timestamp", Long.toString(now));

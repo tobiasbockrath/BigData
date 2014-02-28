@@ -22,7 +22,7 @@ import org.apache.hadoop.mapred.Reporter;
 class MapClass extends MapReduceBase implements
 Mapper<LongWritable, Text, Text, IntWritable> {
 
-	private final static IntWritable one = new IntWritable(1);
+	private final static IntWritable one = new IntWritable(100);
 	private Text word = new Text();	
 	
 	@Override
@@ -37,19 +37,32 @@ Mapper<LongWritable, Text, Text, IntWritable> {
 		while (itr.hasMoreTokens()) {
 			
 			word.set(itr.nextToken());
-			output.collect(word, one);
+			
+			String splitWord[] = word.toString().split(","); 
+			
+			String datum = splitWord[0];
+			
+			String temperature = splitWord[2];
+			String temaar[] = temperature.split(".");
+			
+			int temp = Integer.parseInt(temaar[0]);
+					
+			output.collect(new Text(datum), new IntWritable(temp));
+			
+			
+			
+			
+			
 			/*
-			
-			String newLine = itr.nextToken();
-			StringTokenizer itr1 = new StringTokenizer(newLine, ",");
-			
+			 * String newLine = itr.nextToken();
+			 * StringTokenizer itr1 = new StringTokenizer(newLine, ",");
 			while(itr1.hasMoreTokens()){
 			
 				word.set(itr1.nextToken());
 				output.collect(word, one);
 			}
-			
 			*/
+			
 			
 		}
 	}
@@ -66,6 +79,14 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 			throws IOException {
 		// TODO Auto-generated method stub
 		
+		
+
+		while (values.hasNext()) {
+		
+		}
+		output.collect(key, new IntWritable(values.next().get()));
+		
+		/*
 		int maxTemp = Integer.MIN_VALUE; 
 		
 		while (values.hasNext()) {
@@ -74,7 +95,9 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		}
 		
 		output.collect(key, new IntWritable(maxTemp));
-
+		
+		
+*/
 		
 	}
 }
