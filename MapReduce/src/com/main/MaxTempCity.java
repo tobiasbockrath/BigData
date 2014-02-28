@@ -40,7 +40,6 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 			word.set(itr.nextToken());
 			
 			String splitWord[] = word.toString().split(","); 
-			
 			String city = splitWord[1];
 			float temp = Float.parseFloat(splitWord[5]);
 					
