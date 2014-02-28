@@ -57,7 +57,7 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		int maxTemp = Integer.MIN_VALUE; 
 		
 		while (values.hasNext()) {
-			
+	
 			maxTemp = Math.max(maxTemp, values.next().get());
 		}
 		
