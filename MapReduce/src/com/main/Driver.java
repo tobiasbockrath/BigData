@@ -19,6 +19,7 @@ public class Driver {
 			pgd.addClass("maxtempdate", MaxTempDate.class, "MapReduce Programm um höchste Temperatur insgesamt zu ermitteln");
 			pgd.addClass("mintempcity", MinTempCity.class, "MapReduce Programm um niedrigste Temperatur einer Stadt zu ermitteln");
 			pgd.addClass("mintempdate", MinTempDate.class, "MapReduce Programm um niedrigste Temperatur insgesamt zu ermitteln");
+			pgd.addClass("alltempcity", AllTempCity.class, "MapReduce Programm um alle Temperaturen aller Städte zu ermitteln");
 			pgd.driver(argv);
 			// Success
 			exitCode = 0;
