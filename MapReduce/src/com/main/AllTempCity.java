@@ -42,9 +42,10 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 			String splitWord[] = word.toString().split(",");
 			String datum = splitWord[0];
 			String city = splitWord[1];
+			String country = splitWord[2]; 
 			float temp = Float.parseFloat(splitWord[5]);
 					
-			output.collect(new Text(city + "," + datum), new IntWritable((int)temp));
+			output.collect(new Text(city + "," + country + "," + datum + "," ), new IntWritable((int)temp));
 
 		}
 		
