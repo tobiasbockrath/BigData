@@ -1,3 +1,6 @@
+Häufig genutzte Befehle
+
+
 Jar Dateien nach /usr/lib/flume-ng/lib/
 Log Dateien unter /var/log/flume-ng/
 
@@ -11,5 +14,5 @@ Owner festlegen: hadoop fs -chown -R flume:flume /user/flume
 Recht festlegen: hadoop fs -chmod -R 777 /user/flume
 
 
-MapReduce ausführen
+MapReduce ausführen, zum Testen
 hadoop jar mr.jar MaxTemp /user/flume/2014/02/26/17/FlumeData.1393433795484 /user/flume/output
