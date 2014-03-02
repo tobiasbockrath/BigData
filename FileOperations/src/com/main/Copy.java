@@ -18,7 +18,7 @@ public class Copy {
 		Delete aDelete = new Delete();
 		AllTempCityExportToHtml aAllTempCityExportToHtml = new AllTempCityExportToHtml();
 
-		String source1 = "/user/flume/output1/part-00000";
+		String source1 = "/user/flume/output/part-00000";
 		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
 		
 		Configuration conf = new Configuration();
