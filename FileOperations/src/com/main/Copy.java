@@ -16,7 +16,6 @@ public class Copy {
 		String fileName =  sdt.format(aDate);
 		
 		Delete aDelete = new Delete();
-		AllTempCityExportToHtml aAllTempCityExportToHtml = new AllTempCityExportToHtml();
 
 		String source1 = "/user/flume/output/part-00000";
 		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
@@ -36,8 +35,6 @@ public class Copy {
 			
 			fileSystem.copyToLocalFile(srcPath1, dstPath);
 			aDelete.deleteFolder(source1);
-			aAllTempCityExportToHtml.readFile(dest, fileName);
-			
 			
 		}catch(Exception e){
 			System.err.println("Exception caught! :" + e);

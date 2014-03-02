@@ -8,14 +8,39 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class AllTempCityExportToHtml {
+public class GenerateHTML {
 
-	
-	private ArrayList<String> words = new ArrayList<String>();
-	
-	
-	public void readFile(String dest, String fileName){
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	}
 		
+	public void watch(){
+	
+		String FOLDER = "/home/cloudera/Desktop/jetty/FilesFromHDFS";
+		final long pollingInterval = 5 * 1000;
+		File folder = new File(FOLDER);
+		
+		
+		
+		
+	}
+			
+			 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		ArrayList<String> words = new ArrayList<String>();
 		Scanner input;
 		File inputFile = new File(dest);
 		
@@ -37,7 +62,6 @@ public class AllTempCityExportToHtml {
 		}
 		
 		input.close();
-		generateHTML(fileName);
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -45,10 +69,6 @@ public class AllTempCityExportToHtml {
 		}
 		
 		inputFile.delete();
-	}
-	
-	
-	public void generateHTML(String fileName){
 		
 		
 		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_AllTempCity.html");
