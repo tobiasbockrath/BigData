@@ -33,7 +33,7 @@ public class Weather {
 		Date aDate = new Date ();
 		aDate.setTime((Long.parseLong(unixTimeStamp))*1000);
 		
-	    SimpleDateFormat sdt = new SimpleDateFormat ("yyyy.MM.dd HH:mm:ss");
+	    SimpleDateFormat sdt = new SimpleDateFormat ("yyyy.MM.dd_HH:mm:ss");
 	    String convertedDate =  sdt.format(aDate);
 		
 		return convertedDate;

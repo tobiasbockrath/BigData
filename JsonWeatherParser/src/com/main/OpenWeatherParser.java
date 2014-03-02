@@ -23,7 +23,7 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 										"Bratislava", "Brüssel", "Budapest", "Chișinău", 
 										"Dublin, irl", "Helsinki", "Kiew", "Kopenhagen ", "Lissabon", "Ljubljana", "London,uk",
 										"Madrid", "Minsk", "Monaco ", "Moskau", "Oslo","Paris,fr",
-										"Podgorica", "Prag", "Reykjavík", "Riga ", "Rom", "Sarajevo", "Skopje",
+										"Podgorica", "Reykjavík", "Riga ", "Rom", "Skopje",
 										"Sofia", "Stockholm", "Talinn", "Tirana", "Vaduz", "Valletta", "Vilnius",
 										"Warschau", "Wien", "Zagreb"};
 	
@@ -41,7 +41,7 @@ public class OpenWeatherParser extends AbstractSource implements EventDrivenSour
 			
 			//Einheitlicher Zeitpunkt an dem die Daten abgerufen wurden
 			Date aDate = new Date( );
-		    SimpleDateFormat sdt = new SimpleDateFormat ("yyyy.MM.dd HH:mm:ss");
+		    SimpleDateFormat sdt = new SimpleDateFormat ("yyyy.MM.dd_HH:mm:ss");
 		    String dt =  sdt.format(aDate);
 			
 		    //ruft die Daten aller Städte ab
