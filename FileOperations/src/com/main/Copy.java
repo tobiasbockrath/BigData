@@ -17,10 +17,8 @@ public class Copy {
 		
 		Delete aDelete = new Delete();
 		AllTempCityExportToHtml aAllTempCityExportToHtml = new AllTempCityExportToHtml();
-		MaxTempCityExportToHtml aMaxTempCityExportToHtml = new MaxTempCityExportToHtml();
 
 		String source1 = "/user/flume/output1/part-00000";
-		String source2 = "/user/flume/output2/part-00000";
 		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
 		
 		Configuration conf = new Configuration();
@@ -31,7 +29,6 @@ public class Copy {
 		FileSystem fileSystem = FileSystem.get(conf);
 		
 		Path srcPath1 = new Path(source1);
-		Path srcPath2 = new Path(source2);
 		Path dstPath = new Path(dest);
 		
 		 
@@ -41,9 +38,6 @@ public class Copy {
 			aDelete.deleteFolder(source1);
 			aAllTempCityExportToHtml.readFile(dest, fileName);
 			
-			fileSystem.copyToLocalFile(srcPath2, dstPath);
-			aDelete.deleteFolder(source2);
-			aMaxTempCityExportToHtml.generateHTML(fileName);
 			
 		}catch(Exception e){
 			System.err.println("Exception caught! :" + e);
