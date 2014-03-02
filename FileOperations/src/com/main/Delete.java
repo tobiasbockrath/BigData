@@ -8,9 +8,8 @@ import org.apache.hadoop.fs.Path;
 
 public class Delete {
 	
-	public void deleteFolder() throws IOException {
+	public void deleteFolder(String file) throws IOException {
 		
-		String file = "/user/flume/output";
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/core-site.xml"));
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/hdfs-site.xml"));
