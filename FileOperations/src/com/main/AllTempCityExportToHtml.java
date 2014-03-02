@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class ExportToHtml {
+public class AllTempCityExportToHtml {
 
 	
 	private ArrayList<String> words = new ArrayList<String>();
@@ -51,7 +51,7 @@ public class ExportToHtml {
 	public void generateHTML(String fileName){
 		
 		
-		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + ".html");
+		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/AllTempCity" + fileName + ".html");
 		
 		try {
 			

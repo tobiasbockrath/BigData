@@ -16,7 +16,7 @@ public class Copy {
 		String fileName =  sdt.format(aDate);
 		
 		Delete aDelete = new Delete();
-		ExportToHtml aExportToHtml = new ExportToHtml();
+		AllTempCityExportToHtml aExportToHtml = new AllTempCityExportToHtml();
 
 		String source = "/user/flume/output/part-00000";
 		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
