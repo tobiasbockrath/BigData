@@ -51,7 +51,7 @@ public class AllTempCityExportToHtml {
 	public void generateHTML(String fileName){
 		
 		
-		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/AllTempCity" + fileName + ".html");
+		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_AllTempCity.html");
 		
 		try {
 			
