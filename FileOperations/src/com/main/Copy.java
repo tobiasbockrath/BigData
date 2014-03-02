@@ -37,7 +37,7 @@ public class Copy {
 			
 			fileSystem.copyToLocalFile(srcPath, dstPath);
 			System.out.println("File " + filename + "copied to " + dest);
-			//aDelete.deleteFolder();
+			aDelete.deleteFolder();
 			aExportToHtml.readFile(dest, fileName);
 			
 		}catch(Exception e){
