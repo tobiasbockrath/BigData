@@ -1,0 +1,33 @@
+<workflow-app name="WeatherWorkflow" xmlns="uri:oozie:workflow:0.4">
+    <start to="MR1"/>
+    <action name="MR1">
+        <map-reduce>
+            <job-tracker>$localhost:8020</job-tracker>
+            <name-node>localhost:8021</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.mapper.class</name>
+                    <value>AllTempCity.map</value>
+                </property>
+                <property>
+                    <name>mapred.reducer.class</name>
+                    <value>AllTempCity.reduce</value>
+                </property>
+                <property>
+                    <name>mapred.input.dir</name>
+                    <value>/user/flume/input</value>
+                </property>
+                <property>
+                    <name>mapred.output.dir</name>
+                    <value>/user/flume/output</value>
+                </property>
+            </configuration>
+        </map-reduce>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    <kill name="kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
