@@ -17,7 +17,7 @@ public class Delete {
 		 
 		FileSystem fileSystem = FileSystem.get(conf);
 		 
-		fileSystem.delete(new Path(file), true);
+		fileSystem.delete(new Path("/user/flume/output"), true);
 		 
 		fileSystem.close();
 	}
