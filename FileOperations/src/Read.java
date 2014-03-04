@@ -17,8 +17,6 @@ public class Read {
 	public static void main(String [] args) {
 		// TODO Auto-generated method stub
 		
-		String MapReduceName = args[0];
-		
 		ArrayList<String> words = new ArrayList<String>();
 		WriteHTML aWriteHTML = new WriteHTML();
 		
@@ -59,6 +57,6 @@ public class Read {
 			e.printStackTrace();
 		}
 	    
-	    aWriteHTML.writeHTML(MapReduceName, words);    
+	    aWriteHTML.writeHTML(words);    
 	}
 }
