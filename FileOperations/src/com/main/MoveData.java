@@ -7,7 +7,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class CopyFile {
+public class MoveData {
 
 	
 	public static void main(String[] args) {
@@ -17,16 +17,15 @@ public class CopyFile {
 		SimpleDateFormat sdt = new SimpleDateFormat ("yyyyMMdd_HHmmss");
 		String fileName =  sdt.format(aDate);
 		
-		Delete aDelete = new Delete();
-
-		String source1 = "/user/flume/output/part-00000";
-		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
-		
 		Configuration conf = new Configuration();
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/core-site.xml"));
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/hdfs-site.xml"));
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/mapred-site.xml"));
 		 
+		
+		String source1 = "/user/flume/output/part-00000";
+		String dest = "/home/cloudera/Desktop/jetty/FilesFromHDFS/" + fileName;
+	
 		Path srcPath1 = new Path(source1);
 		Path dstPath = new Path(dest);
 		
@@ -36,7 +35,8 @@ public class CopyFile {
 			
 			fileSystem = FileSystem.get(conf);
 			fileSystem.copyToLocalFile(srcPath1, dstPath);
-			aDelete.deleteFolder(source1);
+			fileSystem.delete(new Path("/user/flume/output"), true);
+			
 			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
