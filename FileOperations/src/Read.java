@@ -14,8 +14,10 @@ public class Read {
 	/**
 	 * @param args
 	 */
-	public static void main(String MapReduceName) {
+	public static void main(String [] args) {
 		// TODO Auto-generated method stub
+		
+		String MapReduceName = args[0];
 		
 		ArrayList<String> words = new ArrayList<String>();
 		WriteHTML aWriteHTML = new WriteHTML();

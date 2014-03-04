@@ -17,7 +17,7 @@ public class WriteHTML {
 		String fileName =  sdt.format(aDate);
 		
 		
-		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_" + MapReduceName +".html");
+		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_" + MapReduceName +  "_.html");
 		
 		try {
 			
@@ -51,9 +51,13 @@ public class WriteHTML {
 			writer.write(System.getProperty("line.separator"));
 			
 			for (int i = 0; i < words.size(); i++ ){
-				
-				if (i % 4 == 0) {
-			
+				if (i % 5 == 0){
+					
+				}
+				else{
+					
+					if (i % 4 == 0) {
+						
 						writer.write("<tr>");
 						writer.write(System.getProperty("line.separator"));
 						writer.write("<td>" + words.get(i) + "</td>"); 
@@ -64,6 +68,7 @@ public class WriteHTML {
 						writer.write("<td>" + words.get(i) + "</td>"); 
 						writer.write(System.getProperty("line.separator"));
 				  }
+				}
 			}
 	
 			writer.write("</table>");
