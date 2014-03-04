@@ -1,15 +1,23 @@
-package com.main;
+
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class WriteHTML {
 
-	public void writeHTML(String fileName, ArrayList<String> words){
+	public void writeHTML(String MapReduceName, ArrayList<String> words){
 		
-		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_AllTempCity.html");
+		
+		Date aDate = new Date( );
+		SimpleDateFormat sdt = new SimpleDateFormat ("yyyyMMdd_HHmmss");
+		String fileName =  sdt.format(aDate);
+		
+		
+		File outputFile = new File("/home/cloudera/Desktop/jetty/webapps/output/" + fileName + "_" + MapReduceName +".html");
 		
 		try {
 			
