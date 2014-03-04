@@ -7,9 +7,11 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-public class Copy {
-    
-	public static void fromHdfsToLocal () throws IOException {
+public class CopyFile {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		
 		Date aDate = new Date( );
 		SimpleDateFormat sdt = new SimpleDateFormat ("yyyyMMdd_HHmmss");
@@ -25,34 +27,21 @@ public class Copy {
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/hdfs-site.xml"));
 		conf.addResource(new Path("/home/hadoop/hadoop/conf/mapred-site.xml"));
 		 
-		FileSystem fileSystem = FileSystem.get(conf);
-		
 		Path srcPath1 = new Path(source1);
 		Path dstPath = new Path(dest);
 		
-		 
-		try{
+		FileSystem fileSystem;
+		
+		try {
 			
+			fileSystem = FileSystem.get(conf);
 			fileSystem.copyToLocalFile(srcPath1, dstPath);
 			aDelete.deleteFolder(source1);
 			
-		}catch(Exception e){
-			System.err.println("Exception caught! :" + e);
-			System.exit(1);
-		}finally{
-			fileSystem.close();
-		}
-	}
-		
-
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		try {
-			fromHdfsToLocal();
-		} catch (IOException e) {
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
+			System.exit(1);
 		}
 	}
 }

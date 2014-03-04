@@ -38,13 +38,10 @@ Reducer<Text, IntWritable, Text, IntWritable> {
 		while (itr.hasMoreTokens()) {
 			
 			word.set(itr.nextToken());
-			
 			String splitWord[] = word.toString().split(","); 
 			String city = splitWord[1];
 			float temp = Float.parseFloat(splitWord[5]);
-					
 			output.collect(new Text(city), new IntWritable((int)temp));
-
 		}
 		
 	}
