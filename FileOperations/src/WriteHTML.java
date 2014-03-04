@@ -17,7 +17,7 @@ public class WriteHTML {
 		String fileName =  sdt.format(aDate);
 		
 		
-		File outputFile = new File("/home/cloudera/Desktop/html/" + fileName +  "_AllTempAllCities.html");
+		File outputFile = new File("/home/cloudera/Desktop/html/output/" + fileName +  "_AllTempAllCities.html");
 		
 		try {
 			
